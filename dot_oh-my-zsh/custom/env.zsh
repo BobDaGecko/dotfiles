@@ -8,6 +8,10 @@ export LANG=en_US.UTF-8
 # Custom PATH additions
 export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
 
+if command -v mise &> /dev/null; then
+  eval "$(mise activate zsh)"
+fi
+
 # Initialize Zoxide (if installed)
 if command -v zoxide &> /dev/null; then
   eval "$(zoxide init zsh)"
