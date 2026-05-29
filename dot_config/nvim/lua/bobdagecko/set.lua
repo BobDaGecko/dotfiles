@@ -36,7 +36,8 @@ vim.o.scrolloff = 10
 
 -- Sync the Neovim registers with the system clipboard (unnamedplus uses the '+' register)
 -- Ensures 'y' and 'p' interact directly with your OS clipboard (Windows/Linux)
-vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
+-- Disabled by default in favor of <leader>y to yank to OS
+-- vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 
 -- Split new windows to the right and bottom by default, which feels more natural
 vim.o.splitright = true
