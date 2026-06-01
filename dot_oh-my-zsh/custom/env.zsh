@@ -6,7 +6,7 @@ export VISUAL='nvim'
 export LANG=en_US.UTF-8
 
 # Custom PATH additions
-export PATH="$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
+export PATH="$HOME/.local/share/mise/shims:$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
 
 # Initialize rbw SSH agent (if installed)
 if command -v rbw &> /dev/null; then
@@ -20,7 +20,7 @@ fi
 
 # Initialize Zoxide (if installed)
 if command -v zoxide &> /dev/null; then
-  eval "$(zoxide init zsh --cmd cd)"
+  eval "$(zoxide init zsh)"
 fi
 
 # Set up fzf key bindings and fuzzy completion
