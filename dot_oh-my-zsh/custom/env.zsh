@@ -20,7 +20,7 @@ fi
 
 # Initialize Zoxide (if installed)
 if command -v zoxide &> /dev/null; then
-  eval "$(zoxide init zsh)"
+  eval "$(zoxide init zsh --cmd cd)"
 fi
 
 # Set up fzf key bindings and fuzzy completion
