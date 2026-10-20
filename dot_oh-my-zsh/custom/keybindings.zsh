@@ -5,3 +5,6 @@ bindkey '^[[B' history-substring-search-down
 
 # Bind Ctrl+Space to accept zsh-autosuggestions
 bindkey '^ ' autosuggest-accept
+
+# Bind Alt+A to fuzzy alias browser
+bindkey '^[a' _fzf_alias_widget

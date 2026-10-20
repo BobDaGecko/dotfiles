@@ -1,27 +1,23 @@
-# Default Editor
-export EDITOR='nvim'
-export VISUAL='nvim'
-
 # Language Environment
 export LANG=en_US.UTF-8
 
-# Custom PATH additions
-export PATH="$HOME/.local/share/mise/shims:$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH"
+# Default Editor
+if command -v nvim &> /dev/null; then
+  export EDITOR='nvim'
+  export VISUAL='nvim'
+fi
 
 # Initialize rbw SSH agent (if installed)
 if command -v rbw &> /dev/null; then
   export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/rbw/ssh-agent-socket"
 fi
 
-# Initialize mise (if installed)
-if command -v mise &> /dev/null; then
-  eval "$(mise activate zsh)"
-fi
-
-# Initialize Zoxide (if installed)
-if command -v zoxide &> /dev/null; then
-  eval "$(zoxide init zsh --cmd cd)"
+# GitHub token for MCP servers and http requests (sourced from gh CLI credential store)
+if command -v gh &> /dev/null; then
+  export GITHUB_PERSONAL_ACCESS_TOKEN=$(gh auth token 2>/dev/null)
 fi
 
 # Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
+if command -v fzf &> /dev/null; then
+  source <(fzf --zsh)
+fi
