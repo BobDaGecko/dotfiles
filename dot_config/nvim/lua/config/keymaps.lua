@@ -26,3 +26,7 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 -- Centered search navigation
 vim.keymap.set("n", "n", "nzzzv", { desc = "Next search result (centered)" })
 vim.keymap.set("n", "N", "Nzzzv", { desc = "Prev search result (centered)" })
+
+-- Centered half-page scrolling
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll down half page (centered)" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up half page (centered)" })
