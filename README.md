@@ -112,6 +112,6 @@ WSL does **not** use this agent. It runs its own `rbw-agent` (see above), so no 
 chezmoi status             # should print nothing
 chezmoi doctor             # chezmoi's own health check
 rbw unlocked && ssh-add -l # vault unlocked, keys visible
-ssh -T git@github.com      # "Hi bobdagecko! ..."
+ssh -T git@github.com      # "Hi BobDaGecko! ..."
 mise ls --missing          # should print nothing
 ```
