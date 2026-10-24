@@ -1,0 +1,8 @@
+# Managed by chezmoi. Machine-local settings (`git config --global ...`,
+# e.g. `gh auth setup-git`) land in ~/.gitconfig instead, which chezmoi only
+# creates empty so those writes never touch this file.
+[user]
+	name = {{ .name }}
+	email = {{ .email }}
+[init]
+	defaultBranch = main

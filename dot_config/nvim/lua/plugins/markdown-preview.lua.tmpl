@@ -1,0 +1,18 @@
+return {
+  "iamcco/markdown-preview.nvim",
+{{- if .is_wsl }}
+  init = function()
+    -- WSL2: g:mkdp_browser doesn't reliably launch Windows .exe paths.
+    -- Use g:mkdp_browserfunc to shell out directly (per upstream issue #199).
+    -- redraw! prevents the terminal from going blank after launch.
+    vim.cmd([[
+      function! OpenMarkdownPreviewFirefox(url)
+        let l:firefox = '/mnt/c/Program\ Files/Mozilla\ Firefox/firefox.exe'
+        execute 'silent! !' . l:firefox . ' --new-window ' . a:url
+        redraw!
+      endfunction
+    ]])
+    vim.g.mkdp_browserfunc = "OpenMarkdownPreviewFirefox"
+  end,
+{{- end }}
+}

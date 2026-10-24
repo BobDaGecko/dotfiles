@@ -1,0 +1,16 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+# Pins Neovim plugins to the committed lazy-lock.json so every machine runs
+# the same plugin versions. After `:Lazy update` on one machine, run
+# `chezmoi re-add ~/.config/nvim/lazy-lock.json` and commit.
+# lazy-lock.json hash: {{ include "dot_config/nvim/lazy-lock.json" | sha256sum }}
+set -eu
+
+MISE="$HOME/.local/bin/mise"
+if [ ! -x "$MISE" ] || ! "$MISE" which nvim >/dev/null 2>&1; then
+  echo "nvim-lazy-restore: nvim not installed yet, skipping" >&2
+  exit 0
+fi
+
+"$MISE" exec -- nvim --headless "+Lazy! restore" +qa
+{{ end -}}

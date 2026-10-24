@@ -1,0 +1,14 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+# Installs everything in ~/.config/mise/config.toml.
+# config.toml hash: {{ include "dot_config/mise/config.toml" | sha256sum }}
+set -eu
+
+MISE="$HOME/.local/bin/mise"
+if [ ! -x "$MISE" ]; then
+  echo "mise-install: mise not found at $MISE, skipping (run bootstrap.sh)" >&2
+  exit 0
+fi
+
+"$MISE" install --yes
+{{ end -}}

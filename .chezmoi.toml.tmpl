@@ -1,0 +1,24 @@
+{{- /*
+  Generated into ~/.config/chezmoi/chezmoi.toml on `chezmoi init`.
+  Prompts are asked once per machine and remembered; re-run
+  `chezmoi init --prompt` to answer them again.
+*/ -}}
+
+{{- $name := promptStringOnce . "name" "Git author name" "bobdagecko" -}}
+{{- $email := promptStringOnce . "email" "Git author email" "dev@bobdagecko.dev" -}}
+{{- /* Bitwarden login email for rbw. Kept out of the repo since it's public. */ -}}
+{{- $bwEmail := promptStringOnce . "bw_email" "Bitwarden email (for rbw)" -}}
+
+{{- /* WSL kernels report "microsoft" in their release string */ -}}
+{{- $isWsl := and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+
+[data]
+    name = {{ $name | quote }}
+    email = {{ $email | quote }}
+    bw_email = {{ $bwEmail | quote }}
+    is_wsl = {{ $isWsl }}
+
+# `chezmoi merge` defaults to vimdiff, which isn't installed (vim is aliased to nvim)
+[merge]
+    command = "nvim"
+    args = ["-d", {{ printf "%q" "{{ .Destination }}" }}, {{ printf "%q" "{{ .Source }}" }}, {{ printf "%q" "{{ .Target }}" }}]

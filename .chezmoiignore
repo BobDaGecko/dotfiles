@@ -1,3 +1,12 @@
 # Ignore admin files so they don't get copied to $HOME
 README.md
 bootstrap.sh
+
+{{ if eq .chezmoi.os "windows" }}
+# Windows isn't applied from this repo yet; keep zsh-land out of C:\Users
+.zshrc
+.p10k.zsh
+.oh-my-zsh
+.config/zsh
+.config/rbw
+{{ end }}

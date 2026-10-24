@@ -1,0 +1,55 @@
+# Third-party shell frameworks/plugins, cloned on first apply and pulled
+# weekly afterwards (`chezmoi apply --refresh-externals` forces a pull).
+# Nothing here lives inside a source-managed directory: chezmoi refuses to
+# own files inside a git-repo external, which is why ZSH_CUSTOM sits in
+# ~/.config/zsh/custom instead of ~/.oh-my-zsh/custom.
+
+[".oh-my-zsh"]
+    type = "git-repo"
+    url = "https://github.com/ohmyzsh/ohmyzsh.git"
+    refreshPeriod = "168h"
+    clone.args = ["--depth", "1"]
+
+# ── Theme ─────────────────────────────────────────────────────────────────────
+[".config/zsh/custom/themes/powerlevel10k"]
+    type = "git-repo"
+    url = "https://github.com/romkatv/powerlevel10k.git"
+    refreshPeriod = "168h"
+    clone.args = ["--depth", "1"]
+
+# ── Plugins (must match the third-party entries in dot_zshrc's plugins=()) ────
+[".config/zsh/custom/plugins/zsh-completions"]
+    type = "git-repo"
+    url = "https://github.com/zsh-users/zsh-completions.git"
+    refreshPeriod = "168h"
+    clone.args = ["--depth", "1"]
+
+[".config/zsh/custom/plugins/zsh-autosuggestions"]
+    type = "git-repo"
+    url = "https://github.com/zsh-users/zsh-autosuggestions.git"
+    refreshPeriod = "168h"
+    clone.args = ["--depth", "1"]
+
+[".config/zsh/custom/plugins/zsh-syntax-highlighting"]
+    type = "git-repo"
+    url = "https://github.com/zsh-users/zsh-syntax-highlighting.git"
+    refreshPeriod = "168h"
+    clone.args = ["--depth", "1"]
+
+[".config/zsh/custom/plugins/zsh-history-substring-search"]
+    type = "git-repo"
+    url = "https://github.com/zsh-users/zsh-history-substring-search.git"
+    refreshPeriod = "168h"
+    clone.args = ["--depth", "1"]
+
+[".config/zsh/custom/plugins/you-should-use"]
+    type = "git-repo"
+    url = "https://github.com/MichaelAquilina/zsh-you-should-use.git"
+    refreshPeriod = "168h"
+    clone.args = ["--depth", "1"]
+
+[".config/zsh/custom/plugins/fzf-tab"]
+    type = "git-repo"
+    url = "https://github.com/Aloxaf/fzf-tab.git"
+    refreshPeriod = "168h"
+    clone.args = ["--depth", "1"]

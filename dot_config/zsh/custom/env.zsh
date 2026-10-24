@@ -7,9 +7,14 @@ if command -v nvim &> /dev/null; then
   export VISUAL='nvim'
 fi
 
-# Initialize rbw SSH agent (if installed)
+# Initialize rbw SSH agent (if installed). Mirrors rbw's own socket dir:
+# $XDG_RUNTIME_DIR/rbw, or $TMPDIR/rbw-$UID when that's unset (no systemd)
 if command -v rbw &> /dev/null; then
-  export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/rbw/ssh-agent-socket"
+  if [[ -n "$XDG_RUNTIME_DIR" ]]; then
+    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/rbw/ssh-agent-socket"
+  else
+    export SSH_AUTH_SOCK="${TMPDIR:-/tmp}/rbw-$UID/ssh-agent-socket"
+  fi
 fi
 
 # GitHub token for MCP servers and http requests (sourced from gh CLI credential store)

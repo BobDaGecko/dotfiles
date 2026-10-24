@@ -1,0 +1,12 @@
+# Leftovers from when ZSH_CUSTOM lived at ~/.oh-my-zsh/custom (pre Oct 2026).
+# Theme/plugin clones now live under ~/.config/zsh/custom via .chezmoiexternal.toml.
+.oh-my-zsh/custom/aliases.zsh
+.oh-my-zsh/custom/env.zsh
+.oh-my-zsh/custom/keybindings.zsh
+.oh-my-zsh/custom/themes/powerlevel10k
+.oh-my-zsh/custom/plugins/fzf-tab
+.oh-my-zsh/custom/plugins/you-should-use
+.oh-my-zsh/custom/plugins/zsh-autosuggestions
+.oh-my-zsh/custom/plugins/zsh-completions
+.oh-my-zsh/custom/plugins/zsh-history-substring-search
+.oh-my-zsh/custom/plugins/zsh-syntax-highlighting

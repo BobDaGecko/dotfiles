@@ -1,0 +1,37 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/bin/bash
+# System packages the rest of the repo assumes exist. Re-runs whenever this
+# file changes, so adding a package here is all it takes to roll it out.
+set -eu
+
+{{ if or (eq .chezmoi.osRelease.id "debian") (eq .chezmoi.osRelease.id "ubuntu") -}}
+sudo apt-get update
+sudo apt-get install -y \
+  zsh git curl unzip \
+  build-essential pkg-config libssl-dev \
+  pinentry-tty \
+  thefuck \
+  xclip
+{{ else if or (eq .chezmoi.osRelease.id "arch") (eq .chezmoi.osRelease.id "cachyos") -}}
+sudo pacman -S --needed --noconfirm \
+  zsh git curl unzip \
+  base-devel pkgconf openssl \
+  pinentry \
+  thefuck \
+  xclip
+{{ else if eq .chezmoi.osRelease.id "fedora" -}}
+sudo dnf install -y \
+  zsh git curl unzip \
+  gcc make pkgconf-pkg-config openssl-devel \
+  pinentry \
+  thefuck \
+  xclip
+{{ else -}}
+echo "install-packages: no package list for '{{ .chezmoi.osRelease.id }}', skipping" >&2
+exit 0
+{{ end }}
+# Make zsh the login shell (no-op once it already is)
+if [ "$(getent passwd "$USER" | cut -d: -f7)" != "$(command -v zsh)" ]; then
+  sudo chsh -s "$(command -v zsh)" "$USER"
+fi
+{{ end -}}
