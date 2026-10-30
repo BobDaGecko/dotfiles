@@ -11,4 +11,10 @@ if [ ! -x "$MISE" ]; then
 fi
 
 "$MISE" install --yes
+
+# rust-analyzer for Neovim's lang.rust extra (rustaceanvim wants it on PATH, not from Mason).
+# mise's rust is rustup-backed, so add the component to the active toolchain.
+if "$MISE" which rustup >/dev/null 2>&1; then
+  "$MISE" exec -- rustup component add rust-analyzer
+fi
 {{ end -}}

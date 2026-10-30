@@ -11,8 +11,9 @@ return {
       { "<C-'>", function() require("agentic").add_selection_or_file_to_context() end, mode = { "n", "v" }, desc = "Add to Agentic Context" },
       { "<C-,>", function() require("agentic").new_session() end, mode = { "n", "v", "i" }, desc = "New Agentic Session" },
       { "<A-i>r", function() require("agentic").restore_session() end, mode = { "n", "v", "i" }, silent = true, desc = "Agentic Restore Session" },
-      { "<leader>ad", function() require("agentic").add_current_line_diagnostics() end, mode = { "n" }, desc = "Add Line Diagnostics to Agentic" },
-      { "<leader>aD", function() require("agentic").add_buffer_diagnostics() end, mode = { "n" }, desc = "Add Buffer Diagnostics to Agentic" },
+      -- <leader>ad/aD belong to claudecode (deny diff), so diagnostics live on x/X
+      { "<leader>ax", function() require("agentic").add_current_line_diagnostics() end, mode = { "n" }, desc = "Add Line Diagnostics to Agentic" },
+      { "<leader>aX", function() require("agentic").add_buffer_diagnostics() end, mode = { "n" }, desc = "Add Buffer Diagnostics to Agentic" },
     },
   },
 
@@ -20,9 +21,9 @@ return {
   {
     "MeanderingProgrammer/render-markdown.nvim",
     opts = {
-      file_types = { "markdown", "Avante", "AgenticChat" },
+      file_types = { "markdown", "AgenticChat" },
     },
-    ft = { "markdown", "Avante", "AgenticChat" },
+    ft = { "markdown", "AgenticChat" },
   },
 
   -- blink.cmp: disable in AgenticInput prompt buffers

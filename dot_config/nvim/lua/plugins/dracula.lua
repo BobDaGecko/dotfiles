@@ -1,11 +1,11 @@
 return {
+  { "Mofiqul/dracula.nvim", lazy = true },
+
+  -- Let LazyVim apply the colorscheme so it loads at the right time (no tokyonight flash)
   {
-    "Mofiqul/dracula.nvim",
-    lazy = false, -- Colorschemes must load immediately
-    priority = 1000, -- Load before all other plugins
-    config = function()
-      -- Apply the colorscheme
-      vim.cmd.colorscheme("dracula")
-    end,
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "dracula",
+    },
   },
 }
